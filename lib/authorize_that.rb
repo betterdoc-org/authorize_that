@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "authorize_that/version"
 
 require_relative "authorize_that/authorize"

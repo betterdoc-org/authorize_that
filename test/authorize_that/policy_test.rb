@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "test_helper"
 
 class AuthorizeThat::PolicyTest < Minitest::Test
@@ -11,6 +13,7 @@ class AuthorizeThat::PolicyTest < Minitest::Test
     end
 
     def standard_method; end
+
     def can_do_without_questionmark; end
 
     private
@@ -31,13 +34,12 @@ class AuthorizeThat::PolicyTest < Minitest::Test
     assert UserPolicy.allows(@user).to(:do_something)
     assert UserPolicy.allows(@user).to(:edit_post, @post)
 
-    @user.stub :confirmed?, false  do
+    @user.stub :confirmed?, false do
       refute UserPolicy.allows(@user).to(:do_something)
     end
 
     @post.user = OpenStruct.new
     refute UserPolicy.allows(@user).to(:edit_post, @post)
-
   end
 
   def test_to_method_works_only_for_public_questionmark_methods_that_start_with_can

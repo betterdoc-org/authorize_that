@@ -1,15 +1,20 @@
-class AuthorizeThat::Policy
-  class << self
-    alias allows new
-  end
+# frozen_string_literal: true
 
-  attr_reader :user
+module AuthorizeThat
+  # :nodoc:
+  class Policy
+    class << self
+      alias allows new
+    end
 
-  def initialize(user)
-    @user = user
-  end
+    attr_reader :user
 
-  def to(action, *args)
-    public_send("can_#{action}?", *args)
+    def initialize(user)
+      @user = user
+    end
+
+    def to(action, *args)
+      public_send("can_#{action}?", *args)
+    end
   end
 end
