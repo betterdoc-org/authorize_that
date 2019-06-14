@@ -98,7 +98,7 @@ end
 
 class StranglyNamedController < ApplicationController
 	def update
-    	@post = Post.find(params[:id])
+        @post = Post.find(params[:id])
 		authorize_that(current_user).can_update_post(@post)
 		if @post.save
 			redirect_to @post
