@@ -1,5 +1,9 @@
 # AuthorizeThat
 
+Sponsored by:
+
+[![BetterDoc](bd_logo.png?raw=true)](https://www.betterdoc.org)
+
 ## Policies
 
 ```ruby
