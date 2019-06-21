@@ -12,7 +12,9 @@ module AuthorizeThat
       end
 
       def method_missing(name, *args)
-        if name.to_s.start_with?("can_")
+        if name.to_s.start_with?("can_") && name.to_s.end_with?("!")
+          policy.public_send("#{name.to_s.sub(/\!\z/, '?')}", *args) or raise AuthorizeThat::Error
+        elsif name.to_s.start_with?("can_")
           policy.public_send("#{name}?", *args)
         else
           super
