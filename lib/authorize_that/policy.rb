@@ -3,6 +3,8 @@
 module AuthorizeThat
   # :nodoc:
   class Policy
+    RuleNotMetError = Class.new(StandardError)
+
     class << self
       alias allows new
     end

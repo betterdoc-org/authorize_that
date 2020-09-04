@@ -45,7 +45,7 @@ class AuthorizeThat::AuthorizeTest < MiniTest::Test
     assert authorize.that(@user).can_edit_post!(@post)
 
     @post.stub(:editable?, false) do
-      assert_raises AuthorizeThat::Error do
+      assert_raises AuthorizeThat::Policy::RuleNotMetError do
         authorize.that(@user).can_edit_post!(@post)
       end
     end

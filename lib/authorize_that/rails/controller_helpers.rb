@@ -1,7 +1,10 @@
+# frozen_string_literal: true
+
 require "action_controller"
 
 module AuthorizeThat
   module Rails
+    # :nodoc:
     module ControllerHelpers
       extend ActiveSupport::Concern
 
